@@ -1,11 +1,17 @@
 // Crear un servidor con express
 const express = require('express');
 
+// Incluir el CORS
+const cors = require('cors');
+
 //Incluir la configuracion de conexion a mysql
 const config = require('./config');
 
 //Crear un servidor con express
 const app = express();
+
+//Usar el CORS
+app.use(cors());
 
 //Usar el puerto 3000
 const port = 3000;
@@ -41,7 +47,8 @@ app.get('/miembros', (req, res) => {
     });
 });
 
-//Cargar las actividades de un proyecto pasando el id en la URL y luego en la query
+// Cargar las actividades de un proyecto pasando el id en la URL 
+// luego en la query
 // Cargar en esta misma ruta los miembros de un proyecto
 app.get('/proyecto/:id/actividades', (req, res) => {
     //Realizar la consulta a la base de datos
